@@ -7,6 +7,7 @@ const pino = require('pino');
 const {
     default: makeWASocket,
     useMultiFileAuthState,
+    version,
     delay,
     makeCacheableSignalKeyStore,
 } = require("@whiskeysockets/baileys");
