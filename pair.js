@@ -29,6 +29,7 @@ router.get('/', async (req, res) => {
         try {
       const client = makeWASocket({
         printQRInTerminal: false,
+        version: [2, 3000, 1023223821],
         logger: pino({
           level: 'silent',
         }),
