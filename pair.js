@@ -7,7 +7,7 @@ const pino = require('pino');
 const {
     default: makeWASocket,
     useMultiFileAuthState,
-    version,
+    fetchLatestBaileysVersion,
     delay,
     makeCacheableSignalKeyStore,
 } = require("@whiskeysockets/baileys");
@@ -24,13 +24,13 @@ function removeFile(filePath) {
 router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
-
+const { version } = await fetchLatestBaileysVersion();
     async function RAVEN() {
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
         try {
       const client = makeWASocket({
+        version,
         printQRInTerminal: false,
-        version: [2, 3000, 1023223821],
         logger: pino({
           level: 'silent',
         }),
