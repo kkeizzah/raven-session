@@ -24,8 +24,9 @@ function removeFile(filePath) {
 router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
-const { version } = await fetchLatestBaileysVersion();
+
     async function RAVEN() {
+        const { version } = await fetchLatestBaileysVersion();
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
         try {
       const client = makeWASocket({
